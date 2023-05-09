@@ -6,9 +6,15 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Log4j2
+
 public class StringConsumer {
     @RabbitListener(queues = "product.log")
     public void consumer(String message) {
         log.info("Consumer received a message: " + message);
+    }
+
+    @RabbitListener(queues = "product.log")
+    public void consumerProduct(String productDto) {
+        log.info("Consumer received a message: " + productDto);
     }
 }
